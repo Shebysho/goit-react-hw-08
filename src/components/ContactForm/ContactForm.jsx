@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contactsOps';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -35,7 +35,7 @@ export default function ContactForm() {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact(newContact));
     reset();
   };
 
