@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
 
-export default function HomePage() {
+function HomePage() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
@@ -15,3 +15,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default HomePage; 

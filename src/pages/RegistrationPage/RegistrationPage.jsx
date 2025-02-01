@@ -1,6 +1,6 @@
 import RegistrationForm from '../components/RegistrationForm/RegistrationForm';
 
-export default function RegistrationPage() {
+function RegistrationPage() { 
   return (
     <main>
       <h1>Registration Page</h1>
@@ -8,3 +8,5 @@ export default function RegistrationPage() {
     </main>
   );
 }
+
+export default RegistrationPage; 
