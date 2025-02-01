@@ -1,26 +1,33 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
-import ContactForm from '../../components/ContactForm/ContactForm';
-import Filter from '../../components/Filter/Filter';
-import ContactList from '../../components/ContactList/ContactList';
+import { getContacts, getIsLoading, getError } from '../../redux/contacts/contactsSelectors'; 
 
-function ContactsPage() {
+const ContactsPage = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <main>
-      <ContactForm />
-      <div>
-        <Filter />
-        <ContactList />
-      </div>
-    </main>
+    <div>
+      <h1>Contacts</h1>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      <ul>
+        {contacts.map(contact => (
+          <li key={contact.id}>
+            {/* Відображення контакту */}
+            {contact.name}: {contact.number}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
 
-export default ContactsPage; 
+export default ContactsPage;
