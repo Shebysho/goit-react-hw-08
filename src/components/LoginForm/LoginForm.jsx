@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/auth/authOps';
+import { login } from '../../redux/auth/operations';
 import s from './LoginForm.module.css';
 
 const validationSchema = Yup.object().shape({
