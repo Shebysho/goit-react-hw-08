@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
-import { selectContacts, selectIsLoading, selectError } from '../../redux/contacts/contactsSelectors';
+import { selectContacts, selectIsLoading, selectError } from '../../redux/contacts/contactsSelectors'; // Виправлені імена селекторів
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const contacts = useSelector(selectContacts); 
+  const isLoading = useSelector(selectIsLoading);   
+  const error = useSelector(selectError); 
 
   useEffect(() => {
     dispatch(fetchContacts());
