@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
-import { getContacts, getIsLoading, getError } from '../../redux/contacts/contactsSelectors'; 
+import { selectContacts, selectIsLoading, selectError } from '../../redux/contacts/contactsSelectors';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
