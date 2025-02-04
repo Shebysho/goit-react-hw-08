@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
-import { selectContacts, selectIsLoading, selectError } from '../../redux/contacts/contactsSelectors';
+import { selectIsLoading, selectError } from '../../redux/contacts/contactsSelectors';
+import ContactList from '../ContactList/ContactList';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts); 
-  const isLoading = useSelector(selectIsLoading);   
-  const error = useSelector(selectError); 
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -18,14 +18,7 @@ const ContactsPage = () => {
       <h1>Contacts</h1>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <ul>
-        {contacts.map(contact => (
-          <li key={contact.id}>
-            {/* Відображення контакту */}
-            {contact.name}: {contact.number}
-          </li>
-        ))}
-      </ul>
+      <ContactList /> { }
     </div>
   );
 };
